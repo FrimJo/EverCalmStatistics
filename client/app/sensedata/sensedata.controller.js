@@ -7,8 +7,11 @@ angular.module('evercalmStatisticsApp')
 
     $scope.message = 'Hello';
 
-    $http.get('/api/sensedata').success(function(sensedata) {
+
+
+    $http.get('/api/sensedata/'+$User._id).success(function(sensedata) {
     	$scope.sensedata = sensedata;
+
     	google.load('visualization', '1.0', {
 	        'packages':['corechart'],
 	        'callback' : function(){

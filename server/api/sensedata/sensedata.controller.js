@@ -40,6 +40,7 @@ exports.create = function(req, res) {
   // Fetch the user id from the body
   var userId = req.body.userId;
 
+
   // Check to see that the user exists
   User.findById(userId, function (err, user) {
       if (err) { return handleError(res, err); }

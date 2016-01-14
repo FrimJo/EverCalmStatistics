@@ -11,7 +11,7 @@ function drawChart(values) {
 
 	dataTable.addColumn('date', 'Date');
 	dataTable.addColumn('number', 'Value');
-
+  
     // Create a empty array
     var data = [];
     
@@ -22,7 +22,7 @@ function drawChart(values) {
 
       // For each value in values, add it to the data array
       values.forEach(function(element){
-        dataTable.addRow([new Date(element.timestamp*1000), element.gsr]);
+        dataTable.addRow([new Date(element.timestamp*1000), element.data]);
       });
     }
 

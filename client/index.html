@@ -32,6 +32,14 @@
     <!--[if lt IE 7]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
+    <div ng-include="'components/navbar/navbar.html'"></div>
+
+    <header class="hero-unit" id="banner">
+      <div class="container">
+        <h1>EverCalm Statistics</h1>
+        <p id="quotes" class="lead"></p>
+      </div>
+    </header>
 
     <!-- Add your site or application content here -->
     <div ui-view=""></div>
@@ -43,8 +51,32 @@
       m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
       })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
-      ga('create', 'UA-XXXXX-X');
-      ga('send', 'pageview');
+      (function(){
+        "use strict";
+        ga('create', 'UA-XXXXX-X');
+        ga('send', 'pageview');
+        var el = document.getElementById("quotes");
+
+        var quotes = [
+          ["Stay Hungry. Stay Foolish.", "Steve Jobs"],
+          ["Good Artists Copy, Great Artists Steal.", "Pablo Picasso"],
+          ["Argue with idiots, and you become an idiot.", "Paul Graham"],
+          ["Be yourself; everyone else is already taken.", "Oscar Wilde"],
+          ["Simplicity is the ultimate sophistication.", "Leonardo Da Vinci"]
+        ];
+
+        function rand(xs) {
+          return quotes[Math.floor(Math.random()*quotes.length)];
+        }
+
+        function quote(q) {
+          return "<p>&ldquo;"+ q[0] +"&rdquo; &mdash; <em>"+ q[1] +"</em></p>";
+        }
+
+        el.innerHTML = quote(rand(quotes));
+      }());
+      
+
     </script>
 
     <!--[if lt IE 9]>
@@ -62,6 +94,7 @@
       <script src="bower_components/lodash/dist/lodash.compat.js"></script>
       <script src="bower_components/angular-socket-io/socket.js"></script>
       <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+      <script src="bower_components/angular-route/angular-route.js"></script>
       <!-- endbower -->
       <script src="socket.io-client/socket.io.js"></script>
     <!-- endbuild -->

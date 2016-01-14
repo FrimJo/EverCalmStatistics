@@ -17,6 +17,11 @@ angular.module('evercalmStatisticsApp')
       $location.path('/login');
     };
 
+    $scope.isActionRegExp = function (regExp){
+      var patt = new RegExp(regExp);
+      return patt.test($location.path());
+    }
+
     $scope.isActive = function(route) {
       return route === $location.path();
     };
